@@ -6,6 +6,7 @@ import { ConfigModuleOptions, DatabaseModule } from 'src/config/module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthorModule } from './author/author.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AuthorModule } from './author/author.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     AuthorModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
