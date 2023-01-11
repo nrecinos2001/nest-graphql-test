@@ -1,5 +1,6 @@
-import { Author } from "src/author/entities/author.entity";
-import { mySqlConnection } from "src/config/database";
+import { CreateAuthorInput } from 'src/author/dto';
+import { Author } from 'src/author/entities/author.entity';
+import { mySqlConnection } from 'src/config/database';
 
 export const AuthorRepository = mySqlConnection.getRepository(Author).extend({
   async findAll(): Promise<Author[]> {
@@ -10,5 +11,16 @@ export const AuthorRepository = mySqlConnection.getRepository(Author).extend({
   async findOneById(id: number): Promise<Author> {
     const author = await AuthorRepository.findOne({ where: { id } });
     return author;
-  }
-})
+  },
+
+  async findOneByUsername(username: string): Promise<Author> {
+    const author = await AuthorRepository.findOne({ where: { username } });
+    return author;
+  },
+
+  async createOne(createAuthorInput: CreateAuthorInput): Promise<Author> {
+    const newAuthor = AuthorRepository.create(createAuthorInput);
+    const savedAuthor = await AuthorRepository.save(newAuthor);
+    return savedAuthor;
+  },
+});

@@ -6,11 +6,13 @@ import { UpdateAuthorInput } from '../dto/update-author.input';
 
 @Resolver(() => Author)
 export class AuthorResolver {
-  constructor(private readonly authorService: AuthorService) { }
+  constructor(private readonly authorService: AuthorService) {}
 
   @Mutation(() => Author)
-  createAuthor(@Args('createAuthorInput') createAuthorInput: CreateAuthorInput) {
-    return this.authorService.create(createAuthorInput);
+  async createAuthor(
+    @Args('createAuthorInput') createAuthorInput: CreateAuthorInput,
+  ) {
+    return await this.authorService.create(createAuthorInput);
   }
 
   @Query(() => [Author], { name: 'authors' })
@@ -24,7 +26,9 @@ export class AuthorResolver {
   }
 
   @Mutation(() => Author)
-  updateAuthor(@Args('updateAuthorInput') updateAuthorInput: UpdateAuthorInput) {
+  updateAuthor(
+    @Args('updateAuthorInput') updateAuthorInput: UpdateAuthorInput,
+  ) {
     return this.authorService.update(updateAuthorInput.id, updateAuthorInput);
   }
 

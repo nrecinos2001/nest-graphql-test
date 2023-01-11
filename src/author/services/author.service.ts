@@ -1,13 +1,18 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
+
+import { CreateAuthorInput, UpdateAuthorInput } from 'src/author/dto';
 import { Author } from 'src/author/entities/author.entity';
 import { AuthorRepository } from 'src/author/repositories/';
-import { CreateAuthorInput } from '../dto/create-author.input';
-import { UpdateAuthorInput } from '../dto/update-author.input';
 
 @Injectable()
 export class AuthorService {
-  create(createAuthorInput: CreateAuthorInput) {
-    return 'This action adds a new author';
+  async create(createAuthorInput: CreateAuthorInput): Promise<Author> {
+    const { password } = createAuthorInput;
+    createAuthorInput.password = await bcrypt.hash(password, 10);
+    const newAuthor = await AuthorRepository.createOne(createAuthorInput);
+
+    return newAuthor;
   }
 
   async findAll(): Promise<Author[]> {
@@ -17,7 +22,14 @@ export class AuthorService {
 
   async findOne(id: number): Promise<Author> {
     const author = await AuthorRepository.findOneById(id);
-    if (!author) throw new NotFoundException(`User with id ${id} was not found`)
+    if (!author)
+      throw new NotFoundException(`User with id ${id} was not found`);
+    return author;
+  }
+
+  async findOneByUsername(username: string): Promise<Author> {
+    const author = await AuthorRepository.findOneByUsername(username);
+    if (!author) throw new NotFoundException();
     return author;
   }
 

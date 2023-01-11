@@ -12,11 +12,20 @@ export class Author {
   @Field(() => String, { description: 'Name of the user' })
   name: string;
 
-  @Column({ name: 'username', type: 'varchar' })
+  @Column({ name: 'email', type: 'varchar', nullable: false, unique: true })
+  @Field(() => String, { description: 'Email of the user' })
+  email: string;
+
+  @Column({
+    name: 'username',
+    type: 'varchar',
+    nullable: false,
+    unique: true,
+  })
   @Field(() => String, { description: 'Username' })
   username: string;
 
   @Column({ name: 'password', type: 'varchar' })
-  @Field(() => String, { description: 'User\'s password' })
+  @Field(() => String, { description: "User's password" })
   password: string;
 }
