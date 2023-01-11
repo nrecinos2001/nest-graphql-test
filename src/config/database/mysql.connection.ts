@@ -1,4 +1,4 @@
-import { DataSource } from "typeorm";
+import { DataSource } from 'typeorm';
 
 import * as mySqlConnectionOptions from '../../../ormconfig.js';
 console.log(mySqlConnectionOptions.entities);
