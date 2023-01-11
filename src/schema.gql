@@ -1,0 +1,74 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Author {
+  """id"""
+  id: Int!
+
+  """Name of the user"""
+  name: String!
+
+  """Email of the user"""
+  email: String!
+
+  """Username"""
+  username: String!
+
+  """User's password"""
+  password: String!
+}
+
+type LoggedAuthorOutput {
+  """Generated access_token of the user"""
+  access_token: String!
+}
+
+type Query {
+  authors: [Author!]!
+  author(id: Int!): Author!
+}
+
+type Mutation {
+  createAuthor(createAuthorInput: CreateAuthorInput!): Author!
+  updateAuthor(updateAuthorInput: UpdateAuthorInput!): Author!
+  removeAuthor(id: Int!): Author!
+  loginUser(loginInput: LoginInput!): LoggedAuthorOutput!
+}
+
+input CreateAuthorInput {
+  """Name of the user"""
+  name: String!
+
+  """Email of the user"""
+  email: String!
+
+  """Username of the user"""
+  username: String!
+
+  """Password of the user"""
+  password: String!
+}
+
+input UpdateAuthorInput {
+  """Name of the user"""
+  name: String
+
+  """Email of the user"""
+  email: String
+
+  """Username of the user"""
+  username: String
+
+  """Password of the user"""
+  password: String
+  id: Int!
+}
+
+input LoginInput {
+  """User's username"""
+  username: String!
+
+  """User's password"""
+  password: String!
+}
