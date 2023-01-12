@@ -3,6 +3,7 @@ import { AuthorService } from 'src/author/services';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { Author } from 'src/author/entities/author.entity';
+import { AuthorCredentials } from 'src/types';
 
 @Injectable()
 export class AuthService {
@@ -20,7 +21,7 @@ export class AuthService {
     return null;
   }
 
-  async login(credentials: Pick<Author, 'username' | 'password'>) {
+  async login(credentials: AuthorCredentials) {
     const validAuthor = await this.validateAuthor(
       credentials.username,
       credentials.password,
