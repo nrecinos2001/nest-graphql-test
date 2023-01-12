@@ -1,9 +1,14 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
 import { CreateAuthorInput, UpdateAuthorInput } from 'src/author/dto';
 import { Author } from 'src/author/entities/author.entity';
 import { AuthorRepository } from 'src/author/repositories/';
+import { AuthorPayload } from 'src/types';
 
 @Injectable()
 export class AuthorService {
@@ -33,8 +38,14 @@ export class AuthorService {
     return author;
   }
 
-  update(id: number, updateAuthorInput: UpdateAuthorInput) {
-    return `This action updates a #${id} author`;
+  async update(currentAuthor: AuthorPayload, updateAuthorInput: UpdateAuthorInput): Promise<Author> {
+    const author = await this.findOne(updateAuthorInput.id);
+    if (author.id !== currentAuthor.id) {
+      throw new ForbiddenException();
+    }
+    const updateAuthor = { ...author, ...updateAuthorInput };
+    const updatedAuthor = await AuthorRepository.save(updateAuthor);
+    return updatedAuthor;
   }
 
   remove(id: number) {
