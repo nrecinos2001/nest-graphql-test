@@ -104,4 +104,5 @@ input UpdateToDoInput {
   """Todo's Title"""
   title: String
   id: Int!
+  isCompleted: Boolean!
 }
