@@ -6,7 +6,7 @@ import { UpdateToDoInput } from '../dto/update-to-do.input';
 import { User } from 'src/decorators';
 import { AuthorPayload } from 'src/types';
 import { UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from 'src/auth/guards/';
 
 @Resolver(() => ToDo)
 export class ToDosResolver {
