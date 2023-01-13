@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { AuthorService } from '../services/author.service';
-import { User } from 'src/decorators'
+import { User } from 'src/decorators';
 import { Author } from '../entities/author.entity';
 import { CreateAuthorInput } from '../dto/create-author.input';
 import { UpdateAuthorInput } from '../dto/update-author.input';
@@ -35,12 +35,9 @@ export class AuthorResolver {
   @Mutation(() => Author)
   async updateAuthor(
     @Args('updateAuthorInput') updateAuthorInput: UpdateAuthorInput,
-    @User() authorPayload: AuthorPayload
+    @User() authorPayload: AuthorPayload,
   ) {
-    return await this.authorService.update(
-      authorPayload,
-      updateAuthorInput,
-    );
+    return await this.authorService.update(authorPayload, updateAuthorInput);
   }
 
   @Mutation(() => Author)

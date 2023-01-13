@@ -1,9 +1,9 @@
 export type AuthorCredentials = {
-  username: string,
-  password: string,
-}
+  username: string;
+  password: string;
+};
 
 export type AuthorPayload = {
-  id: number,
-  username: string,
-}
+  id: number;
+  username: string;
+};
