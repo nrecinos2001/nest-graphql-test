@@ -2,6 +2,20 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type ToDo {
+  """Todo Id"""
+  id: Int!
+
+  """Todo title"""
+  title: String!
+
+  """Todo completion"""
+  isCompleted: Boolean!
+
+  """Author of Todos"""
+  author: Author!
+}
+
 type Author {
   """id"""
   id: Int!
@@ -17,6 +31,9 @@ type Author {
 
   """User's password"""
   password: String!
+
+  """User Todos"""
+  todos: [ToDo!]!
 }
 
 type LoggedAuthorOutput {
@@ -27,6 +44,8 @@ type LoggedAuthorOutput {
 type Query {
   authors: [Author!]!
   author(id: Int!): Author!
+  toDos: [ToDo!]!
+  toDo(id: Int!): ToDo!
 }
 
 type Mutation {
@@ -34,6 +53,9 @@ type Mutation {
   updateAuthor(updateAuthorInput: UpdateAuthorInput!): Author!
   removeAuthor(id: Int!): Author!
   loginUser(loginInput: LoginInput!): LoggedAuthorOutput!
+  createToDo(createToDoInput: CreateToDoInput!): ToDo!
+  updateToDo(updateToDoInput: UpdateToDoInput!): ToDo!
+  removeToDo(id: Int!): ToDo!
 }
 
 input CreateAuthorInput {
@@ -71,4 +93,15 @@ input LoginInput {
 
   """User's password"""
   password: String!
+}
+
+input CreateToDoInput {
+  """Todo's Title"""
+  title: String!
+}
+
+input UpdateToDoInput {
+  """Todo's Title"""
+  title: String
+  id: Int!
 }
