@@ -31,6 +31,6 @@ export class Author {
   password: string;
 
   @OneToMany(() => ToDo, (todo) => todo.author)
-  @Field(() => ToDo, { description: 'User Todos' })
+  @Field(() => [ToDo], { description: 'User Todos' })
   todos: ToDo[];
 }
