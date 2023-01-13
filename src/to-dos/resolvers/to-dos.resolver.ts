@@ -21,23 +21,27 @@ export class ToDosResolver {
     return await this.toDosService.create(createToDoInput, authorPayload);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Query(() => [ToDo], { name: 'toDos' })
-  findAll() {
-    return this.toDosService.findAll();
+  async findAll() {
+    return await this.toDosService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Query(() => ToDo, { name: 'toDo' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  async findOne(@Args('id', { type: () => Int }) id: number) {
     return this.toDosService.findOne(id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Mutation(() => ToDo)
-  updateToDo(@Args('updateToDoInput') updateToDoInput: UpdateToDoInput) {
-    return this.toDosService.update(updateToDoInput.id, updateToDoInput);
+  async updateToDo(@Args('updateToDoInput') updateToDoInput: UpdateToDoInput, @User() authorPayload: AuthorPayload) {
+    return this.toDosService.update(authorPayload, updateToDoInput);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Mutation(() => ToDo)
-  removeToDo(@Args('id', { type: () => Int }) id: number) {
+  async removeToDo(@Args('id', { type: () => Int }) id: number) {
     return this.toDosService.remove(id);
   }
 }

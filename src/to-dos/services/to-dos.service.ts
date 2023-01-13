@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { AuthorRepository } from 'src/author/repositories';
 import { ToDo } from 'src/to-dos/entities';
 import { ToDoRepository } from 'src/to-dos/repositories';
 import { AuthorPayload } from 'src/types';
+import { validateSameUser } from 'src/utils';
 import { CreateToDoInput } from '../dto/create-to-do.input';
 import { UpdateToDoInput } from '../dto/update-to-do.input';
 
@@ -17,16 +18,25 @@ export class ToDosService {
     return todo;
   }
 
-  findAll() {
-    return `This action returns all toDos`;
+  async findAll(): Promise<ToDo[]> {
+    const todos = await ToDoRepository.findAll();
+    return todos;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} toDo`;
+  async findOne(id: number): Promise<ToDo> {
+    const todo = await ToDoRepository.findOneByTodoId(id);
+    if (!todo) {
+      throw new NotFoundException();
+    }
+    return todo;
   }
 
-  update(id: number, updateToDoInput: UpdateToDoInput) {
-    return `This action updates a #${id} toDo`;
+  async update(authorPayload: AuthorPayload, updateToDoInput: UpdateToDoInput): Promise<ToDo> {
+    const todo = await this.findOne(updateToDoInput.id);
+    validateSameUser(authorPayload.id, todo.author.id);
+    const updateToDo = await ToDoRepository.updateOne(todo, updateToDoInput);
+    return updateToDo;
+
   }
 
   remove(id: number) {
