@@ -35,7 +35,10 @@ export class ToDosResolver {
 
   @UseGuards(JwtAuthGuard)
   @Mutation(() => ToDo)
-  async updateToDo(@Args('updateToDoInput') updateToDoInput: UpdateToDoInput, @User() authorPayload: AuthorPayload) {
+  async updateToDo(
+    @Args('updateToDoInput') updateToDoInput: UpdateToDoInput,
+    @User() authorPayload: AuthorPayload,
+  ) {
     return this.toDosService.update(authorPayload, updateToDoInput);
   }
 

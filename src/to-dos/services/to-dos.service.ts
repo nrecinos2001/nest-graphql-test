@@ -31,12 +31,14 @@ export class ToDosService {
     return todo;
   }
 
-  async update(authorPayload: AuthorPayload, updateToDoInput: UpdateToDoInput): Promise<ToDo> {
+  async update(
+    authorPayload: AuthorPayload,
+    updateToDoInput: UpdateToDoInput,
+  ): Promise<ToDo> {
     const todo = await this.findOne(updateToDoInput.id);
     validateSameUser(authorPayload.id, todo.author.id);
     const updateToDo = await ToDoRepository.updateOne(todo, updateToDoInput);
     return updateToDo;
-
   }
 
   remove(id: number) {

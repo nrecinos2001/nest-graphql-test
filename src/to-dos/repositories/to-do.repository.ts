@@ -28,5 +28,5 @@ export const ToDoRepository = mySqlConnection.getRepository(ToDo).extend({
     const updateTodo = { ...todo, ...updateToDoInput };
     const updatedToDo = await ToDoRepository.save(updateTodo);
     return updatedToDo;
-  }
+  },
 });

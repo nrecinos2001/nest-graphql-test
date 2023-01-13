@@ -1,5 +1,4 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
-import { Author } from 'src/author/entities';
+import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()
 export class CreateToDoInput {
