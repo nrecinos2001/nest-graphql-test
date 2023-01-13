@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthorModule } from './author/author.module';
 import { AuthModule } from './auth/auth.module';
+import { ToDosModule } from './to-dos/to-dos.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { AuthModule } from './auth/auth.module';
     }),
     AuthorModule,
     AuthModule,
+    ToDosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
