@@ -40,8 +40,12 @@ export class AuthorResolver {
     return await this.authorService.update(authorPayload, updateAuthorInput);
   }
 
-  @Mutation(() => Author)
-  removeAuthor(@Args('id', { type: () => Int }) id: number) {
-    return this.authorService.remove(id);
+  @UseGuards(JwtAuthGuard)
+  @Mutation(() => Author, { nullable: true })
+  async removeAuthor(
+    @Args('id', { type: () => Int }) id: number,
+    @User() authorPayload: AuthorPayload,
+  ): Promise<null> {
+    return this.authorService.remove(id, authorPayload);
   }
 }

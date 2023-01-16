@@ -46,7 +46,10 @@ export class AuthorService {
     return updatedAuthor;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} author`;
+  async remove(id: number, authorPayload: AuthorPayload): Promise<null> {
+    const author = await this.findOne(id);
+    validateSameUser(authorPayload.id, author.id);
+    await AuthorRepository.remove(author);
+    return null;
   }
 }
