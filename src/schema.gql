@@ -51,7 +51,7 @@ type Query {
 type Mutation {
   createAuthor(createAuthorInput: CreateAuthorInput!): Author!
   updateAuthor(updateAuthorInput: UpdateAuthorInput!): Author!
-  removeAuthor(id: Int!): Author!
+  removeAuthor(id: Int!): Author
   loginUser(loginInput: LoginInput!): LoggedAuthorOutput!
   createToDo(createToDoInput: CreateToDoInput!): ToDo!
   updateToDo(updateToDoInput: UpdateToDoInput!): ToDo!
