@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from 'src/auth/services';
-import { JwtStrategy, LocalStrategy } from 'src/auth/strategies';
+import { JwtStrategy, LocalStrategy } from 'src/common/strategies';
 import { AuthorModule } from 'src/author/author.module';
 import { AuthResolver } from './resolvers/auth.resolver';
-import { jwtConstants } from 'src/auth/constants/constants';
+import { jwtConstants } from 'src/common/constants/constants';
 @Module({
   imports: [
     AuthorModule,

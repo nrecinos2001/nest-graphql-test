@@ -3,10 +3,10 @@ import { ToDosService } from '../services/to-dos.service';
 import { ToDo } from '../entities/to-do.entity';
 import { CreateToDoInput } from '../dto/create-to-do.input';
 import { UpdateToDoInput } from '../dto/update-to-do.input';
-import { User } from 'src/decorators';
-import { AuthorPayload } from 'src/types';
+import { User } from 'src/common/decorators';
+import { AuthorPayload } from 'src/common/types';
 import { UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/guards/';
+import { JwtAuthGuard } from 'src/common/guards';
 
 @Resolver(() => ToDo)
 export class ToDosResolver {

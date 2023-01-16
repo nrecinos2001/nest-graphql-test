@@ -4,8 +4,8 @@ import * as bcrypt from 'bcrypt';
 import { CreateAuthorInput, UpdateAuthorInput } from 'src/author/dto';
 import { Author } from 'src/author/entities/author.entity';
 import { AuthorRepository } from 'src/author/repositories/';
-import { AuthorPayload } from 'src/types';
-import { validateSameUser } from 'src/utils';
+import { AuthorPayload } from 'src/common/types';
+import { validateSameUser } from 'src/common/utils';
 
 @Injectable()
 export class AuthorService {

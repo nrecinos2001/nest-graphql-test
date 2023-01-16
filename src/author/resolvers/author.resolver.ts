@@ -1,12 +1,12 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { AuthorService } from '../services/author.service';
-import { User } from 'src/decorators';
+import { User } from 'src/common/decorators';
 import { Author } from '../entities/author.entity';
 import { CreateAuthorInput } from '../dto/create-author.input';
 import { UpdateAuthorInput } from '../dto/update-author.input';
 import { UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { AuthorPayload } from 'src/types';
+import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
+import { AuthorPayload } from 'src/common/types';
 
 @Resolver(() => Author)
 export class AuthorResolver {

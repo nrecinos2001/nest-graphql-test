@@ -2,8 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { AuthorRepository } from 'src/author/repositories';
 import { ToDo } from 'src/to-dos/entities';
 import { ToDoRepository } from 'src/to-dos/repositories';
-import { AuthorPayload } from 'src/types';
-import { validateSameUser } from 'src/utils';
+import { AuthorPayload } from 'src/common/types';
+import { validateSameUser } from 'src/common/utils';
 import { CreateToDoInput } from '../dto/create-to-do.input';
 import { UpdateToDoInput } from '../dto/update-to-do.input';
 
