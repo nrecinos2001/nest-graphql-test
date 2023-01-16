@@ -41,7 +41,10 @@ export class ToDosService {
     return updateToDo;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} toDo`;
+  async remove(id: number, authorPayload: AuthorPayload): Promise<null> {
+    const todo = await this.findOne(id);
+    validateSameUser(authorPayload.id, todo.author.id);
+    await ToDoRepository.remove(todo);
+    return null;
   }
 }

@@ -43,8 +43,11 @@ export class ToDosResolver {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Mutation(() => ToDo)
-  async removeToDo(@Args('id', { type: () => Int }) id: number) {
-    return this.toDosService.remove(id);
+  @Mutation(() => ToDo, { nullable: true })
+  async removeToDo(
+    @Args('id', { type: () => Int }) id: number,
+    @User() authorPayload: AuthorPayload,
+  ): Promise<null> {
+    return await this.toDosService.remove(id, authorPayload);
   }
 }
