@@ -55,7 +55,7 @@ type Mutation {
   loginUser(loginInput: LoginInput!): LoggedAuthorOutput!
   createToDo(createToDoInput: CreateToDoInput!): ToDo!
   updateToDo(updateToDoInput: UpdateToDoInput!): ToDo!
-  removeToDo(id: Int!): ToDo!
+  removeToDo(id: Int!): ToDo
 }
 
 input CreateAuthorInput {
