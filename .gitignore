@@ -17,6 +17,9 @@ lerna-debug.log*
 # Information
 .env
 
+# Migrations
+src/migration
+
 # Tests
 /coverage
 /.nyc_output
