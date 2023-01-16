@@ -1,7 +1,6 @@
 import { Author } from 'src/author/entities';
 import { mySqlConnection } from 'src/config/database';
-import { CreateToDoInput } from 'src/to-dos/dto/create-to-do.input';
-import { UpdateToDoInput } from 'src/to-dos/dto/update-to-do.input';
+import { CreateToDoInput, UpdateToDoInput } from 'src/to-dos/dto';
 import { ToDo } from 'src/to-dos/entities/';
 
 export const ToDoRepository = mySqlConnection.getRepository(ToDo).extend({

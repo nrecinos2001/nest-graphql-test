@@ -1,6 +1,7 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { ToDo } from 'src/to-dos/entities/to-do.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+
+import { ToDo } from 'src/to-dos/entities';
 
 @ObjectType()
 @Entity()

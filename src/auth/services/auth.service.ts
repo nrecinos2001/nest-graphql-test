@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { AuthorService } from 'src/author/services';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+
 import { AuthorCredentials } from 'src/common/types';
 
 @Injectable()

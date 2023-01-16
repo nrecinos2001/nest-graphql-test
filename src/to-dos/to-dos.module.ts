@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
-import { ToDosService } from './services/to-dos.service';
-import { ToDosResolver } from './resolvers/to-dos.resolver';
+
+import { ToDosService } from './services';
+import { ToDosResolver } from './resolvers';
 
 @Module({
   providers: [ToDosResolver, ToDosService],

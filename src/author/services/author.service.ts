@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
 import { CreateAuthorInput, UpdateAuthorInput } from 'src/author/dto';
-import { Author } from 'src/author/entities/author.entity';
+import { Author } from 'src/author/entities';
 import { AuthorRepository } from 'src/author/repositories/';
 import { AuthorPayload } from 'src/common/types';
 import { validateSameUser } from 'src/common/utils';
