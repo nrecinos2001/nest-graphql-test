@@ -9,7 +9,7 @@ module.exports = {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
   collectCoverageFrom: ['**/*.service.(t|j)s', '**/common/helpers/*.{ts,js}'],
-  coverageDirectory: '../coverage',
+  coverageDirectory: './coverage',
   testEnvironment: 'node',
   modulePaths: ['<rootDir>'],
   coverageThreshold: {
