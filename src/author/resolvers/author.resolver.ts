@@ -6,7 +6,11 @@ import { Author } from '../entities';
 import { User } from 'src/common/decorators';
 import { JwtAuthGuard } from 'src/common/guards';
 import { AuthorPayload } from 'src/common/types';
-import { AuthorOutput, CreateAuthorInput, UpdateAuthorInput } from 'src/author/dto';
+import {
+  AuthorOutput,
+  CreateAuthorInput,
+  UpdateAuthorInput,
+} from 'src/author/dto';
 
 @Resolver(() => Author)
 export class AuthorResolver {

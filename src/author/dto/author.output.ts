@@ -1,5 +1,5 @@
-import { Field, Int, ObjectType } from "@nestjs/graphql";
-import { ToDo } from "src/to-dos/entities";
+import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { ToDo } from 'src/to-dos/entities';
 
 @ObjectType()
 export class AuthorOutput {
@@ -12,7 +12,7 @@ export class AuthorOutput {
   @Field(() => String, { description: 'Email of the user' })
   email: string;
 
-  @Field(() => String, { description: 'User\'s username' })
+  @Field(() => String, { description: "User's username" })
   username: string;
 
   @Field(() => [ToDo], { description: 'User Todos' })
