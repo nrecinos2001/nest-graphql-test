@@ -20,7 +20,11 @@ export class AuthorService {
 
   async findAll(): Promise<AuthorOutput[]> {
     const authors = await AuthorRepository.findAll();
-    return authors;
+    const authorsOutput = authors.map((author) => {
+      delete author.password;
+      return author;
+    });
+    return authorsOutput;
   }
 
   async findOne(id: number): Promise<Author> {
