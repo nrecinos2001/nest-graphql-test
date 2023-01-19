@@ -6,13 +6,13 @@ import { Author } from '../entities';
 import { User } from 'src/common/decorators';
 import { JwtAuthGuard } from 'src/common/guards';
 import { AuthorPayload } from 'src/common/types';
-import { CreateAuthorInput, UpdateAuthorInput } from 'src/author/dto';
+import { AuthorOutput, CreateAuthorInput, UpdateAuthorInput } from 'src/author/dto';
 
 @Resolver(() => Author)
 export class AuthorResolver {
   constructor(private readonly authorService: AuthorService) {}
 
-  @Mutation(() => Author)
+  @Mutation(() => AuthorOutput)
   async createAuthor(
     @Args('createAuthorInput') createAuthorInput: CreateAuthorInput,
   ) {
@@ -20,19 +20,19 @@ export class AuthorResolver {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Query(() => [Author], { name: 'authors' })
+  @Query(() => [AuthorOutput], { name: 'authors' })
   async findAll() {
     return await this.authorService.findAll();
   }
 
   @UseGuards(JwtAuthGuard)
-  @Query(() => Author, { name: 'author' })
+  @Query(() => AuthorOutput, { name: 'author' })
   async findOne(@Args('id', { type: () => Int }) id: number) {
     return await this.authorService.findOne(id);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Mutation(() => Author)
+  @Mutation(() => AuthorOutput)
   async updateAuthor(
     @Args('updateAuthorInput') updateAuthorInput: UpdateAuthorInput,
     @User() authorPayload: AuthorPayload,
@@ -41,7 +41,7 @@ export class AuthorResolver {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Mutation(() => Author, { nullable: true })
+  @Mutation(() => AuthorOutput, { nullable: true })
   async removeAuthor(
     @Args('id', { type: () => Int }) id: number,
     @User() authorPayload: AuthorPayload,
