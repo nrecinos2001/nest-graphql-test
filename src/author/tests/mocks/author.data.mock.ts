@@ -10,6 +10,15 @@ export const johnDoe: Author = {
   todos: [],
 };
 
+export const updatedJohnDoe: Author = {
+  id: 1,
+  name: 'John Doe',
+  email: 'john@doe.com.sv',
+  username: 'johnDoe123',
+  password: 'pasword',
+  todos: [],
+};
+
 export const kamilDoe: Author = {
   id: 1,
   name: 'Kamil Doe',
