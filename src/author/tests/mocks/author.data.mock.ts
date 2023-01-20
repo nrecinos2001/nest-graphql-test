@@ -6,7 +6,7 @@ export const johnDoe: Author = {
   name: 'John Doe',
   email: 'john@doe.com',
   username: 'johnDoe',
-  password: 'pasword',
+  password: '$2b$10$NH.itaNQA/AQu5Pg5nAg6OdOHZ.LovBG3uAhbEEtFmbd/CVcsQpqK',
   todos: [],
 };
 
@@ -15,7 +15,7 @@ export const updatedJohnDoe: Author = {
   name: 'John Doe',
   email: 'john@doe.com.sv',
   username: 'johnDoe123',
-  password: 'pasword',
+  password: 'password',
   todos: [],
 };
 
@@ -24,7 +24,7 @@ export const kamilDoe: Author = {
   name: 'Kamil Doe',
   email: 'kamil@doe.com',
   username: 'kamilDoe',
-  password: 'pasword',
+  password: 'password',
   todos: [],
 };
 
