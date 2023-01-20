@@ -30,7 +30,6 @@ export class AuthService {
       throw new UnauthorizedException();
     }
     const payload = { username: validAuthor.username, id: validAuthor.id };
-    console.log(payload);
     return {
       access_token: this.jwtService.sign(payload),
     };
