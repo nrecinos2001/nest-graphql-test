@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { AuthorService } from 'src/author/services';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
@@ -26,7 +26,11 @@ export class AuthService {
       credentials.username,
       credentials.password,
     );
+    if (!validAuthor) {
+      throw new UnauthorizedException();
+    }
     const payload = { username: validAuthor.username, id: validAuthor.id };
+    console.log(payload);
     return {
       access_token: this.jwtService.sign(payload),
     };
