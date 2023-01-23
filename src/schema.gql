@@ -60,7 +60,7 @@ type LoggedAuthorOutput {
 
 type Query {
   authors: [AuthorOutput!]!
-  author(id: Int!): AuthorOutput!
+  author(id: Int!): Author!
   toDos: [ToDo!]!
   toDo(id: Int!): ToDo!
 }
