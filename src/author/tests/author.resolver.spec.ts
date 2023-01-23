@@ -1,6 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { UpdateAuthorInput } from 'src/author/dto';
-import { authors, createAuthorInput, johnDoe, johnDoeOutput, updatedJohnDoe } from 'src/author/tests/mocks';
+import {
+  authors,
+  createAuthorInput,
+  johnDoe,
+  updatedJohnDoe,
+} from 'src/author/tests/mocks';
 import { AuthorPayload } from 'src/common/types';
 import { AuthorResolver } from '../resolvers/author.resolver';
 import { AuthorService } from '../services/author.service';
@@ -64,7 +70,9 @@ describe('AuthorResolver', () => {
           id: 1,
           username: 'johnDoe',
         };
-        jest.spyOn(authorService, 'update').mockResolvedValueOnce(updatedJohnDoe);
+        jest
+          .spyOn(authorService, 'update')
+          .mockResolvedValueOnce(updatedJohnDoe);
         const result = resolver.updateAuthor(updateAuthorInput, currentAuthor);
         await expect(result).resolves.toEqual(updatedJohnDoe);
       });

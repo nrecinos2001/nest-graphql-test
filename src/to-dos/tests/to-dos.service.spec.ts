@@ -1,5 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { AuthorRepository } from 'src/author/repositories';
 import { johnDoe } from 'src/author/tests/mocks';
 import { AuthorPayload } from 'src/common/types';
@@ -108,7 +109,7 @@ describe('ToDosService', () => {
         jest.spyOn(ToDoRepository, 'remove').mockResolvedValueOnce(null);
         const result = service.remove(id, authorPayload);
         await expect(result).resolves.toEqual(null);
-      })
-    })
-  })
+      });
+    });
+  });
 });

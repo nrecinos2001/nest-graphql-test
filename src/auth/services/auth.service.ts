@@ -1,8 +1,8 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { AuthorService } from 'src/author/services';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 
+import { AuthorService } from 'src/author/services';
 import { AuthorCredentials } from 'src/common/types';
 
 @Injectable()
@@ -15,6 +15,7 @@ export class AuthService {
     const author = await this.authorService.findOneByUsername(username);
     const validPassword = await bcrypt.compare(password, author.password);
     if (author && validPassword) {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { password, ...result } = author;
       return result;
     }

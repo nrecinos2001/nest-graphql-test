@@ -3,4 +3,4 @@ export const access_token =
 
 export const accessTokenResponse = {
   access_token,
-}
+};

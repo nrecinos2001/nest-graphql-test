@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { LoggedAuthorOutput, LoginInput } from 'src/auth/dto';
+
+import { LoginInput } from 'src/auth/dto';
 import { AuthService } from 'src/auth/services';
 import { accessTokenResponse, access_token } from 'src/auth/tests/mocks';
 import { AuthResolver } from '../resolvers/';
@@ -10,12 +11,15 @@ describe('AuthResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AuthResolver, {
-        provide: AuthService,
-        useValue: {
-          login: jest.fn(),
-        }
-      }],
+      providers: [
+        AuthResolver,
+        {
+          provide: AuthService,
+          useValue: {
+            login: jest.fn(),
+          },
+        },
+      ],
     }).compile();
 
     resolver = module.get<AuthResolver>(AuthResolver);
@@ -33,9 +37,13 @@ describe('AuthResolver', () => {
           username: 'jhonDoe',
           password: 'password555',
         };
-        jest.spyOn(authService, 'login').mockResolvedValueOnce(accessTokenResponse);
+        jest
+          .spyOn(authService, 'login')
+          .mockResolvedValueOnce(accessTokenResponse);
         const result = resolver.loginUser(loginInput);
-        await expect(result).resolves.toEqual(expect.objectContaining({ access_token }))
+        await expect(result).resolves.toEqual(
+          expect.objectContaining({ access_token }),
+        );
       });
     });
   });
