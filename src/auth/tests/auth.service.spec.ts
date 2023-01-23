@@ -2,6 +2,7 @@ import { UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
 import { LoginInput } from 'src/auth/dto';
+import { access_token } from 'src/auth/tests/mocks';
 import { AuthorService } from 'src/author/services';
 import { johnDoe } from 'src/author/tests/mocks';
 import { AuthService } from '../services/';
@@ -43,8 +44,6 @@ describe('AuthService', () => {
   describe('login', () => {
     describe('When login successfully', () => {
       it('should return a token', async () => {
-        const access_token =
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
         const credentials: LoginInput = {
           username: 'jhonDoe',
           password: 'password',
