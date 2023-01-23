@@ -30,7 +30,7 @@ export class AuthorResolver {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Query(() => AuthorOutput, { name: 'author' })
+  @Query(() => Author, { name: 'author' })
   async findOne(@Args('id', { type: () => Int }) id: number) {
     return await this.authorService.findOne(id);
   }
