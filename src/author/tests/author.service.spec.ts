@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException } from '@nestjs/common';
 
-import { AuthorService } from '../services/';
-import { AuthorRepository } from '../repositories';
+import { AuthorService } from '@Authors/services/';
+import { AuthorRepository } from '@Authors/repositories';
 import {
   johnDoe,
   johnDoeOutput,
@@ -12,7 +12,7 @@ import {
   updatedJohnDoe,
   authorPayload,
   updateAuthorInput,
-} from 'src/author/tests/mocks';
+} from '@Authors/tests/mocks';
 
 describe('AuthorService', () => {
   let service: AuthorService;

@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
-import { CreateAuthorInput, UpdateAuthorInput } from 'src/author/dto';
-import { AuthorOutput } from 'src/author/dto/author.output';
-import { Author } from 'src/author/entities';
-import { AuthorRepository } from 'src/author/repositories/';
-import { AuthorPayload } from 'src/common/types';
-import { validateSameUser } from 'src/common/utils';
+import { CreateAuthorInput, UpdateAuthorInput } from '@Authors/dto';
+import { AuthorOutput } from '@Authors/dto/author.output';
+import { Author } from '@Authors/entities';
+import { AuthorRepository } from '@Authors/repositories/';
+import { AuthorPayload } from '@Common/types';
+import { validateSameUser } from '@Common/utils';
 
 @Injectable()
 export class AuthorService {

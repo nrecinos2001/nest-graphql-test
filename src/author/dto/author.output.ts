@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { ToDo } from 'src/to-dos/entities';
+
+import { ToDo } from '@ToDos/entities';
 
 @ObjectType()
 export class AuthorOutput {

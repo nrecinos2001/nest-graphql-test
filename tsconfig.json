@@ -16,6 +16,13 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@Common/*": ["src/common/*"],
+      "@Config/*": ["src/config/*"],
+      "@Auth/*": ["src/auth/*"],
+      "@Authors/*":["src/author/*"],
+      "@ToDos/*": ["src/to-dos/*"]
+    }
   }
 }

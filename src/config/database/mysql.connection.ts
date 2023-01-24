@@ -1,6 +1,6 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 
-import configuration from '../configuration';
+import configuration from '@Config/configuration';
 const ormOption = configuration().database;
 
 const dataSourceOptions = {
