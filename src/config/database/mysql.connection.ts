@@ -1,5 +1,17 @@
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
-import * as mySqlConnectionOptions from '../../../ormconfig.js';
+import configuration from '../configuration';
+const ormOption = configuration().database;
 
-export const mySqlConnection = new DataSource(mySqlConnectionOptions);
+const dataSourceOptions = {
+  ...ormOption,
+  synchronize: false,
+  entities: ['dist/**/*.entity{.ts,.js}'],
+  migrations: ['dist/migration/*.{js,ts}'],
+  seeds: ['dist/seeds/*.seed.{ts,js}'],
+  cli: {
+    migrationsDir: 'migration',
+  },
+} as DataSourceOptions;
+
+export const mySqlConnection = new DataSource({ ...dataSourceOptions });

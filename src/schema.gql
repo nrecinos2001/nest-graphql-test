@@ -36,22 +36,39 @@ type Author {
   todos: [ToDo!]!
 }
 
+type AuthorOutput {
+  """id"""
+  id: Int!
+
+  """Name of the user"""
+  name: String!
+
+  """Email of the user"""
+  email: String!
+
+  """User's username"""
+  username: String!
+
+  """User Todos"""
+  todos: [ToDo!]!
+}
+
 type LoggedAuthorOutput {
   """Generated access_token of the user"""
   access_token: String!
 }
 
 type Query {
-  authors: [Author!]!
+  authors: [AuthorOutput!]!
   author(id: Int!): Author!
   toDos: [ToDo!]!
   toDo(id: Int!): ToDo!
 }
 
 type Mutation {
-  createAuthor(createAuthorInput: CreateAuthorInput!): Author!
-  updateAuthor(updateAuthorInput: UpdateAuthorInput!): Author!
-  removeAuthor(id: Int!): Author
+  createAuthor(createAuthorInput: CreateAuthorInput!): AuthorOutput!
+  updateAuthor(updateAuthorInput: UpdateAuthorInput!): AuthorOutput!
+  removeAuthor(id: Int!): AuthorOutput
   loginUser(loginInput: LoginInput!): LoggedAuthorOutput!
   createToDo(createToDoInput: CreateToDoInput!): ToDo!
   updateToDo(updateToDoInput: UpdateToDoInput!): ToDo!
