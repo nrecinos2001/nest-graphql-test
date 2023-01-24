@@ -1,13 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { UpdateAuthorInput } from 'src/author/dto';
 import {
+  authorPayload,
   authors,
   createAuthorInput,
   johnDoe,
+  updateAuthorInput,
   updatedJohnDoe,
 } from 'src/author/tests/mocks';
-import { AuthorPayload } from 'src/common/types';
 import { AuthorResolver } from '../resolvers/author.resolver';
 import { AuthorService } from '../services/author.service';
 
@@ -61,19 +61,10 @@ describe('AuthorResolver', () => {
   describe('updateAuthor', () => {
     describe('When an author is updated', () => {
       it('should return the author information updated', async () => {
-        const updateAuthorInput: UpdateAuthorInput = {
-          id: 1,
-          username: 'johnDoe123',
-          email: 'john@doe.com.sv',
-        };
-        const currentAuthor: AuthorPayload = {
-          id: 1,
-          username: 'johnDoe',
-        };
         jest
           .spyOn(authorService, 'update')
           .mockResolvedValueOnce(updatedJohnDoe);
-        const result = resolver.updateAuthor(updateAuthorInput, currentAuthor);
+        const result = resolver.updateAuthor(updateAuthorInput, authorPayload);
         await expect(result).resolves.toEqual(updatedJohnDoe);
       });
     });
@@ -83,10 +74,6 @@ describe('AuthorResolver', () => {
     describe('When an author is removed', () => {
       it('should return null', async () => {
         const id = 1;
-        const authorPayload: AuthorPayload = {
-          id: 1,
-          username: 'johnDoe',
-        };
         jest.spyOn(authorService, 'remove').mockResolvedValueOnce(null);
         const result = resolver.removeAuthor(id, authorPayload);
         await expect(result).resolves.toEqual(null);

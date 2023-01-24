@@ -2,12 +2,17 @@ import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { AuthorRepository } from 'src/author/repositories';
-import { johnDoe } from 'src/author/tests/mocks';
+import { authorPayload, johnDoe } from 'src/author/tests/mocks';
 import { AuthorPayload } from 'src/common/types';
-import { CreateToDoInput, UpdateToDoInput } from 'src/to-dos/dto';
+import { CreateToDoInput } from 'src/to-dos/dto';
 import { ToDoRepository } from 'src/to-dos/repositories';
 import { ToDosService } from 'src/to-dos/services';
-import { todo, toDosList, updatedToDo } from 'src/to-dos/tests/mocks';
+import {
+  todo,
+  toDosList,
+  updatedToDo,
+  updateToDoInput,
+} from 'src/to-dos/tests/mocks';
 
 describe('ToDosService', () => {
   let service: ToDosService;
@@ -81,14 +86,6 @@ describe('ToDosService', () => {
   describe('update', () => {
     describe('when a To Do is updated', () => {
       it('should return the updated To Do', async () => {
-        const authorPayload: AuthorPayload = {
-          id: 1,
-          username: 'johnDoe',
-        };
-        const updateToDoInput: UpdateToDoInput = {
-          id: 1,
-          isCompleted: true,
-        };
         jest.spyOn(ToDoRepository, 'findOne').mockResolvedValueOnce(todo);
         jest.spyOn(ToDoRepository, 'save').mockResolvedValueOnce(updatedToDo);
         const result = service.update(authorPayload, updateToDoInput);
@@ -100,10 +97,6 @@ describe('ToDosService', () => {
   describe('remove', () => {
     describe('When a To Do is deleted', () => {
       it('should return null', async () => {
-        const authorPayload: AuthorPayload = {
-          id: 1,
-          username: 'johnDoe',
-        };
         const id = 1;
         jest.spyOn(ToDoRepository, 'findOne').mockResolvedValueOnce(todo);
         jest.spyOn(ToDoRepository, 'remove').mockResolvedValueOnce(null);

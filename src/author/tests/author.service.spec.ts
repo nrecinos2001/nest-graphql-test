@@ -10,9 +10,9 @@ import {
   authorsOutput,
   authors,
   updatedJohnDoe,
+  authorPayload,
+  updateAuthorInput,
 } from 'src/author/tests/mocks';
-import { AuthorPayload } from 'src/common/types';
-import { UpdateAuthorInput } from 'src/author/dto';
 
 describe('AuthorService', () => {
   let service: AuthorService;
@@ -117,15 +117,6 @@ describe('AuthorService', () => {
     describe('update', () => {
       describe('When an author is updated', () => {
         it('should return the updated author', async () => {
-          const updateAuthorInput: UpdateAuthorInput = {
-            id: 1,
-            username: 'johnDoe123',
-            email: 'john@doe.com.sv',
-          };
-          const currentAuthor: AuthorPayload = {
-            id: 1,
-            username: 'johnDoe',
-          };
           jest
             .spyOn(AuthorRepository, 'findOne')
             .mockImplementationOnce(async () => {
@@ -136,7 +127,7 @@ describe('AuthorService', () => {
             .mockImplementationOnce(async () => {
               return updatedJohnDoe;
             });
-          const result = service.update(currentAuthor, updateAuthorInput);
+          const result = service.update(authorPayload, updateAuthorInput);
           await expect(result).resolves.toEqual(updatedJohnDoe);
         });
       });
@@ -146,10 +137,6 @@ describe('AuthorService', () => {
       describe('When deletes a user and it is the one validated', () => {
         it('should return null', async () => {
           const id = 1;
-          const authorPayload: AuthorPayload = {
-            id: 1,
-            username: 'johnDoe',
-          };
           jest
             .spyOn(AuthorRepository, 'findOne')
             .mockImplementation(async () => {

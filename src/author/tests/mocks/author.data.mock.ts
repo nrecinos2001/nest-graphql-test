@@ -1,4 +1,8 @@
-import { AuthorOutput, CreateAuthorInput } from 'src/author/dto';
+import {
+  AuthorOutput,
+  CreateAuthorInput,
+  UpdateAuthorInput,
+} from 'src/author/dto';
 import { Author } from 'src/author/entities';
 import { AuthorPayload } from 'src/common/types';
 
@@ -59,4 +63,10 @@ export const authorsOutput: AuthorOutput[] = [johnDoeOutput, kamilDoeOutput];
 export const authorPayload: AuthorPayload = {
   id: 1,
   username: 'johnDoe',
+};
+
+export const updateAuthorInput: UpdateAuthorInput = {
+  id: 1,
+  username: 'johnDoe123',
+  email: 'john@doe.com.sv',
 };
