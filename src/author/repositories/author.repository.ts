@@ -1,6 +1,6 @@
-import { mySqlConnection } from 'src/config/database';
-import { CreateAuthorInput } from 'src/author/dto';
-import { Author } from 'src/author/entities';
+import { mySqlConnection } from '@Config/database';
+import { CreateAuthorInput } from '@Authors/dto';
+import { Author } from '@Authors/entities';
 
 export const AuthorRepository = mySqlConnection.getRepository(Author).extend({
   async findAll(): Promise<Author[]> {

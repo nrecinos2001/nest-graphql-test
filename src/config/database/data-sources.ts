@@ -1,5 +1,6 @@
 import { FactoryProvider } from '@nestjs/common';
-import { mySqlConnection } from './mysql.connection';
+
+import { mySqlConnection } from '@Config/database';
 
 export const mySqlDatabaseProvider: FactoryProvider[] = [
   {

@@ -1,7 +1,7 @@
-import { Author } from 'src/author/entities';
-import { mySqlConnection } from 'src/config/database';
-import { CreateToDoInput, UpdateToDoInput } from 'src/to-dos/dto';
-import { ToDo } from 'src/to-dos/entities/';
+import { Author } from '@Authors/entities';
+import { mySqlConnection } from '@Config/database';
+import { CreateToDoInput, UpdateToDoInput } from '@ToDos/dto';
+import { ToDo } from '@ToDos/entities/';
 
 export const ToDoRepository = mySqlConnection.getRepository(ToDo).extend({
   async createToDo(todo: CreateToDoInput, author: Author): Promise<ToDo> {

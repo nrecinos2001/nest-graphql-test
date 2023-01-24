@@ -2,9 +2,9 @@ import {
   AuthorOutput,
   CreateAuthorInput,
   UpdateAuthorInput,
-} from 'src/author/dto';
-import { Author } from 'src/author/entities';
-import { AuthorPayload } from 'src/common/types';
+} from '@Authors/dto';
+import { Author } from '@Authors/entities';
+import { AuthorPayload } from '@Common/types';
 
 export const johnDoe: Author = {
   id: 1,

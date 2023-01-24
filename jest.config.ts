@@ -12,6 +12,14 @@ module.exports = {
   coverageDirectory: './coverage',
   testEnvironment: 'node',
   modulePaths: ['<rootDir>'],
+  moduleNameMapper: {
+    '@/(.*)': '<rootDir>/src/$1',
+    '@Common/(.*)': '<rootDir>/src/common/$1',
+    '@Config/(.*)': '<rootDir>/src/config/$1',
+    '@Auth/(.*)': '<rootDir>/src/auth/$1',
+    '@Authors/(.*)': '<rootDir>/src/author/$1',
+    '@ToDos/(.*)': '<rootDir>/src/to-dos/$1',
+  },
   coverageThreshold: {
     global: {
       branches: 80,

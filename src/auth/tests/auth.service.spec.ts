@@ -1,11 +1,12 @@
 import { UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
-import { LoginInput } from 'src/auth/dto';
-import { access_token } from 'src/auth/tests/mocks';
-import { AuthorService } from 'src/author/services';
-import { johnDoe } from 'src/author/tests/mocks';
-import { AuthService } from '../services/';
+
+import { LoginInput } from '@Auth/dto';
+import { access_token } from '@Auth/tests/mocks';
+import { AuthService } from '@Auth/services/';
+import { AuthorService } from '@Authors/services';
+import { johnDoe } from '@Authors/tests/mocks';
 
 describe('AuthService', () => {
   let service: AuthService;

@@ -1,11 +1,11 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { UseGuards } from '@nestjs/common';
 
-import { AuthorService } from '../services';
-import { Author } from '../entities';
-import { User } from 'src/common/decorators';
-import { JwtAuthGuard } from 'src/common/guards';
-import { AuthorPayload } from 'src/common/types';
+import { AuthorService } from '@Authors/services';
+import { Author } from '@Authors/entities';
+import { User } from '@Common/decorators';
+import { JwtAuthGuard } from '@Common/guards';
+import { AuthorPayload } from '@Common/types';
 import {
   AuthorOutput,
   CreateAuthorInput,

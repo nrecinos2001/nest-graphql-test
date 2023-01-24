@@ -2,12 +2,13 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
-import { ConfigModuleOptions, DatabaseModule } from 'src/config/module';
+
+import { ConfigModuleOptions, DatabaseModule } from '@Config/module';
+import { AuthorModule } from '@Authors/author.module';
+import { AuthModule } from '@Auth/auth.module';
+import { ToDosModule } from '@ToDos/to-dos.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthorModule } from './author/author.module';
-import { AuthModule } from './auth/auth.module';
-import { ToDosModule } from './to-dos/to-dos.module';
 
 @Module({
   imports: [

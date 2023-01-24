@@ -1,18 +1,18 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { AuthorRepository } from 'src/author/repositories';
-import { authorPayload, johnDoe } from 'src/author/tests/mocks';
-import { AuthorPayload } from 'src/common/types';
-import { CreateToDoInput } from 'src/to-dos/dto';
-import { ToDoRepository } from 'src/to-dos/repositories';
-import { ToDosService } from 'src/to-dos/services';
+import { AuthorRepository } from '@Authors/repositories';
+import { authorPayload, johnDoe } from '@Authors/tests/mocks';
+import { AuthorPayload } from '@Common/types';
+import { CreateToDoInput } from '@ToDos/dto';
+import { ToDoRepository } from '@ToDos/repositories';
+import { ToDosService } from '@ToDos/services';
 import {
   todo,
   toDosList,
   updatedToDo,
   updateToDoInput,
-} from 'src/to-dos/tests/mocks';
+} from '@ToDos/tests/mocks';
 
 describe('ToDosService', () => {
   let service: ToDosService;

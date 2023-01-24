@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { LoginInput } from 'src/auth/dto';
-import { AuthService } from 'src/auth/services';
-import { accessTokenResponse, access_token } from 'src/auth/tests/mocks';
-import { AuthResolver } from '../resolvers/';
+import { LoginInput } from '@Auth/dto';
+import { AuthService } from '@Auth/services';
+import { accessTokenResponse, access_token } from '@Auth/tests/mocks';
+import { AuthResolver } from '@Auth/resolvers';
 
 describe('AuthResolver', () => {
   let resolver: AuthResolver;

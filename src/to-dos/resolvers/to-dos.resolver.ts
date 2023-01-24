@@ -1,12 +1,12 @@
 import { UseGuards } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 
-import { ToDosService } from '../services';
-import { ToDo } from '../entities';
-import { CreateToDoInput, UpdateToDoInput } from '../dto';
-import { User } from 'src/common/decorators';
-import { AuthorPayload } from 'src/common/types';
-import { JwtAuthGuard } from 'src/common/guards';
+import { ToDosService } from '@ToDos/services';
+import { ToDo } from '@ToDos/entities';
+import { CreateToDoInput, UpdateToDoInput } from '@ToDos/dto';
+import { User } from '@Common/decorators';
+import { AuthorPayload } from '@Common/types';
+import { JwtAuthGuard } from '@Common/guards';
 
 @Resolver(() => ToDo)
 export class ToDosResolver {

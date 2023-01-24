@@ -7,9 +7,9 @@ import {
   johnDoe,
   updateAuthorInput,
   updatedJohnDoe,
-} from 'src/author/tests/mocks';
-import { AuthorResolver } from '../resolvers/author.resolver';
-import { AuthorService } from '../services/author.service';
+} from '@Authors/tests/mocks';
+import { AuthorResolver } from '@Authors/resolvers';
+import { AuthorService } from '@Authors/services';
 
 describe('AuthorResolver', () => {
   let resolver: AuthorResolver;
