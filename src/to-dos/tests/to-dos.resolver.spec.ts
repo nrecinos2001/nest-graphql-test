@@ -1,7 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { authorPayload } from 'src/author/tests/mocks';
-import { createToDoInput, todo, toDosList, updatedToDo, updateToDoInput } from 'src/to-dos/tests/mocks';
+import {
+  createToDoInput,
+  todo,
+  toDosList,
+  updatedToDo,
+  updateToDoInput,
+} from 'src/to-dos/tests/mocks';
 import { ToDosResolver } from '../resolvers/to-dos.resolver';
 import { ToDosService } from '../services/to-dos.service';
 

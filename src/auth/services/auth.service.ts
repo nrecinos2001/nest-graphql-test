@@ -15,7 +15,7 @@ export class AuthService {
     const author = await this.authorService.findOneByUsername(username);
     const validPassword = await bcrypt.compare(password, author.password);
     if (author && validPassword) {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      // eslint-disable-next-line
       const { password, ...result } = author;
       return result;
     }
